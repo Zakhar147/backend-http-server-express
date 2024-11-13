@@ -1,24 +1,15 @@
 const express = require('express');
+const prodRoutes = require('./products_routes');
+const { logRequest } = require('./middleware');
+const { errorResponder } = require('./error.midleware');
 
 const app = express();
+const PORT = 3000;
 
-const products = [
-    { id: 1, name: 'Product 1', brand: 'brand_a' },
-    { id: 2, name: 'Product 2', brand: 'brand_b' },
-    { id: 3, name: 'Product 3', brand: 'brand_c' }
-  ];
+app.use(logRequest);
+app.use(prodRoutes);
+app.use(errorResponder);
 
-app.get('/', (req, res) => {
-    res.send('Response for GET request.')
-});
-
-app.get('/products/:brand', (req, res) => {
-    const { brand } = req.params;
-    const filteredProducts = products.filter(prod => prod.brand == brand);
-
-    res.send(filteredProducts)
-})
-
-app.listen(3000, () => {
-    console.log("Server started at port 3000");
+app.listen(PORT, () => {
+    console.log(`Server is on PORT: ${PORT}`)
 })
