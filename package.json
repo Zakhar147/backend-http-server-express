@@ -1,14 +1,22 @@
 {
-  "name": "backend",
+  "name": "nodejs-course",
   "version": "1.0.0",
-  "description": "Хачатурян Захар 147",
-  "main": "index.js",
+  "description": "",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node src/index.js",
+    "migration:generate": "drizzle-kit generate",
+    "migration:push": "drizzle-kit push"
   },
-  "author": "",
+  "author": "maksym bychok",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "drizzle-orm": "^0.40.0",
+    "express": "^4.18.2",
+    "pg": "^8.14.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.5"
   }
 }
